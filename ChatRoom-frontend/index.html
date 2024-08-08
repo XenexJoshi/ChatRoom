@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title> ChatRoom </title>
+</head>
+
+<body>
+  <div class="Container">
+    <div class="Header">
+      ChatRoom
+    </div>
+
+    <div class="Messages" id="messageBox">
+
+    </div>
+
+    <div class="Input">
+      <input type="text" class="Input-box" id="Text-message" />
+      <button class="Button" id="Button-send"> Send </button>
+    </div>
+  </div>
+</body>
+<script src="node_modules/@microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="chat.js"></script>
+
+</html>
