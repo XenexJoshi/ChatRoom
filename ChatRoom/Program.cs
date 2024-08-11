@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
 
+// Configuring url for frontend connection
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
