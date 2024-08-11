@@ -58,3 +58,4 @@
 /Users/xenexjoshi/react-/C#-ChatRoom/ChatRoom/obj/Debug/net8.0/ChatRoom.pdb
 /Users/xenexjoshi/react-/C#-ChatRoom/ChatRoom/obj/Debug/net8.0/ChatRoom.genruntimeconfig.cache
 /Users/xenexjoshi/react-/C#-ChatRoom/ChatRoom/obj/Debug/net8.0/ref/ChatRoom.dll
+/Users/xenexjoshi/react-/C#-ChatRoom/ChatRoom/obj/Debug/net8.0/ChatRoom.sourcelink.json

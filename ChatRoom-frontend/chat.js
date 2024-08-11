@@ -1,21 +1,32 @@
 "use strict";
 
+/**
+ * [connection] is the location of the signalR connection hub that allows 
+ * communication with the backend signalR program.
+ */
 const connection = new signalR.HubConnectionBuilder()
   .withUrl("http://localhost:5017/chatHub")
   .configureLogging(signalR.LogLevel.Information)
   .build();
 
-// Initializing connection to SignalR backend
+/**
+ * [start] initiates the linking between the location at [connection] and the
+ * html program. This method logs an error to the console if it encounters an 
+ * error during execution.
+ */
 const start = async () => {
   try {
     await connection.start();
-    console.log("connected");
+    console.log("Connected to ChatRoom backend.");
   } catch (e) {
     console.log(e);
   }
 }
 
-// Setting username to storage
+/**
+ * [joinUser] prompts the user to enter a username for identification throughout
+ * the session, and assigns the name to a sessionStorage for easier retrieval.
+ */
 const joinUser = async () => {
   const name = window.prompt("Enter Username: ");
   if (name) {
@@ -24,6 +35,11 @@ const joinUser = async () => {
   }
 }
 
+/**
+ * [joinChat(user)] connects the user [user] to the backend to allow communication
+ * among active users within the server. Any error encountered during the execution
+ * is logged to the console.
+ */
 const joinChat = async (user) => {
   if (!user) {
     return;
@@ -34,10 +50,16 @@ const joinChat = async (user) => {
     console.log(e);
   }
 }
-//Fetching user name
+
+/**
+ * [getUser] returns the name of the particular user entered at the start of the
+ * chat session.
+ */
 const getUser = () => sessionStorage.getItem('user');
 
-// Getting notification from server
+/**
+ * 
+ */
 const receiveMessage = async () => {
   const currUser = getUser();
   if (!currUser) {
@@ -83,7 +105,7 @@ const sendMessage = async (user, message) => {
     console.log(e);
   }
 }
-// Startin stuff
+// Startin stuffee
 const startApp = async () => {
   await start(); //Establishing connection
   await joinUser(); // Fetching username and connecting to chat
