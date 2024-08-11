@@ -58,7 +58,9 @@ const joinChat = async (user) => {
 const getUser = () => sessionStorage.getItem('user');
 
 /**
- * 
+ *  [receiveMessage] receives incoming messages from other users, and displays it
+ * on the message box on the webpage. This method calls upon [addMessage] to 
+ * display the message on the html page.
  */
 const receiveMessage = async () => {
   const currUser = getUser();
@@ -74,7 +76,11 @@ const receiveMessage = async () => {
   }
 }
 
-// Appending to html file
+/**
+ * [addMessage(message, messageType)] appends the message [message] to the html page
+ * and aligns it according to the governing CSS based on the message type (sender
+ * or receiver) [messageType].
+ */
 const addMessage = (message, messageType) => {
   const msg = document.getElementById("messageBox");
   const msgElement = document.createElement("div");
@@ -84,7 +90,10 @@ const addMessage = (message, messageType) => {
   msg.appendChild(msgElement);
 }
 
-// Binding send
+/** 
+ * Configuring the send message button on the page. This method calls upon 
+ * [sendMessage] to communicate with the backend.
+ */
 document.getElementById("Button-send").addEventListener('click', async (e) => {
   e.preventDefault();
   const user = getUser();
@@ -98,6 +107,10 @@ document.getElementById("Button-send").addEventListener('click', async (e) => {
   }
 })
 
+/**
+ * [sendMessage(user, message)] transmits the message [message] submitted by the
+ * user [user] to all other users presents in the server at the given instance.
+ */
 const sendMessage = async (user, message) => {
   try {
     await connection.invoke("SendMessage", user, message);
@@ -105,11 +118,16 @@ const sendMessage = async (user, message) => {
     console.log(e);
   }
 }
-// Startin stuffee
+
+/**
+ * [startApp] initiates the application on start up, and connects the html page
+ * to the backend and handles incoming and outgoing messages between users.
+ */
 const startApp = async () => {
   await start(); //Establishing connection
   await joinUser(); // Fetching username and connecting to chat
   await receiveMessage();
 }
 
+// Initializing the web program
 startApp();
